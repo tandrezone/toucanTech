@@ -9,6 +9,7 @@
         <li>This app includes a seed to create schools after creating the tables to easier testing to run it use the command php artisan migrate:fresh --seed</li>
         <li>The urls could be more secure (can get next school members changing the url) and more user friendly (school name instead of id) but i thought that for this case was not needed</li>
         <li>The test could be better but due the lack of time dint do extensive test cases (just the basic) </li>
+        <li>The validation could be transformed into rules for reausibility</li>
     </ul>
 
 @endsection
