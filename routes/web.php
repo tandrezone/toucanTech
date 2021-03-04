@@ -19,9 +19,17 @@ use App\Http\Controllers\MembersController;
 Route::get('/', [InfoController::class, 'home'])->name('home');
 Route::get('/notes', [InfoController::class, 'notes'])->name('notes');
 
-//@todo group this
-Route::get('/members', [MembersController::class, 'index'])->name('list_schools');
-Route::get('/members/{school_id}', [MembersController::class, 'show'])->whereNumber('school_id')->name('list_members');
-Route::get('/members/new', [MembersController::class, 'create'])->name('create_member');
-Route::post('/members/new', [MembersController::class, 'store'])->name('store_member');
+Route::prefix('members')->group(function () {
+    Route::get('/', [MembersController::class, 'index'])
+        ->name('list_schools');
 
+    Route::get('{school_id}', [MembersController::class, 'show'])
+        ->whereNumber('school_id')
+        ->name('list_members');
+
+    Route::get('new', [MembersController::class, 'create'])
+        ->name('create_member');
+
+    Route::post('new', [MembersController::class, 'store'])
+        ->name('store_member');
+});

@@ -6,6 +6,7 @@ use App\Models\Member;
 use App\Models\School;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
@@ -45,10 +46,11 @@ class MembersController extends Controller
      * Store a newly created member in storage.
      *
      * @param Request $request
-     * @return Application|Factory|\Illuminate\Contracts\View\View|Response
+     * @return Application|Factory|\Illuminate\Contracts\View\View|RedirectResponse
      */
     public function store(Request $request)
     {
+
         $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|email:filter|max:255|unique:members,email',
@@ -60,6 +62,7 @@ class MembersController extends Controller
         $member->email = $request['email'];
         $success = $member->save();
         $member->schools()->attach($request['school']);
+
         if ($success) {
             return redirect()->route('list_members', ['school_id' => $request['school']]);
         }
