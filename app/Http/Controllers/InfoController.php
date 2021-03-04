@@ -9,6 +9,7 @@ use Illuminate\Contracts\View\View;
 class InfoController extends Controller
 {
     /**
+     * Show the test specs
      * @return Application|Factory|View
      */
     public function home()
@@ -17,6 +18,7 @@ class InfoController extends Controller
     }
 
     /**
+     * Show my notes
      * @return Application|Factory|View
      */
     public function notes()

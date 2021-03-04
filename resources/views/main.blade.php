@@ -22,7 +22,8 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-link @if(Route::current()->getName() == 'home') active @endif" aria-current="page" href="{{ route('home') }}">Home</a>
-                <a class="nav-link" href="{{ route('home') }}">Members</a>
+                <a class="nav-link @if(Route::current()->getName() == 'create_member') active @endif" href="{{ route('create_member') }}">New Member</a>
+                <a class="nav-link @if(Route::current()->getName() == 'list_schools') active @endif" href="{{ route('list_schools') }}">List Schools</a>
                 <a class="nav-link @if(Route::current()->getName() == 'notes') active @endif" href="{{ route('notes') }}">Notes</a>
             </div>
         </div>
